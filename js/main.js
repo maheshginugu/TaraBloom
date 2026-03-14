@@ -118,6 +118,15 @@
         });
       });
     });
+
+    // On page load, apply category filter from URL query parameter (?category=...)
+    var urlCategory = new URLSearchParams(window.location.search).get('category');
+    if (urlCategory) {
+      var targetBtn = document.querySelector('.filter-btn[data-filter="' + urlCategory + '"]');
+      if (targetBtn) {
+        targetBtn.click();
+      }
+    }
   }
 
   /* =============================================
