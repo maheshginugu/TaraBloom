@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Arrivals | TaraBloom Jewellery</title>
-  <meta name="description" content="Shop TaraBloom's latest jewellery arrivals. Fresh anti-tarnish designs added every week. Necklaces, earrings, bracelets and more.">
-  <meta name="keywords" content="new arrivals jewellery, latest jewellery, new jewellery designs, tarabloom new arrivals">
-  <meta property="og:title" content="New Arrivals | TaraBloom">
-  <meta property="og:description" content="Fresh jewellery designs added every week at TaraBloom.">
-  <meta property="og:image" content="images/TaraBloom Square Logo.png">
-  <meta property="og:url" content="https://tarabloom.in/new-arrivals.html">
-  <link rel="icon" type="image/png" href="images/TaraBloom Square Logo.png">
+  <title>Collections | TaraBloom Jewellery</title>
+  <meta name="description" content="Browse our full jewellery collection. Filter by Necklaces, Earrings, Bracelets, Rings and Anklets. Affordable anti-tarnish jewellery from TaraBloom.">
+  <meta name="keywords" content="jewellery collection, necklaces, earrings, bracelets, rings, anklets, tarabloom">
+  <meta property="og:title" content="Collections | TaraBloom Jewellery">
+  <meta property="og:description" content="Browse all jewellery collections by TaraBloom.">
+  <meta property="og:image" content="/images/TaraBloom Square Logo.png">
+  <meta property="og:url" content="https://tarabloom.in/collections/">
+  <link rel="icon" type="image/png" href="/images/TaraBloom Square Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="brand-logo">
-        <img src="images/TaraBloom Round Logo.png" alt="TaraBloom Logo">
+      <a href="/" class="brand-logo">
+        <img src="/images/TaraBloom Round Logo.png" alt="TaraBloom Logo">
         <span class="brand-name">TaraBloom</span>
       </a>
       <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="new-arrivals.html" class="active">New Arrivals</a>
-        <a href="best-sellers.html">Best Sellers</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/collections/" class="active">Collections</a>
+        <a href="/new-arrivals/">New Arrivals</a>
+        <a href="/best-sellers/">Best Sellers</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
       </nav>
       <div class="header-actions">
         <a href="#" title="Search"><i class="fas fa-search"></i></a>
@@ -40,28 +40,38 @@
   </header>
 
   <nav class="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="new-arrivals.html">New Arrivals</a>
-    <a href="best-sellers.html">Best Sellers</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="/">Home</a>
+    <a href="/collections/">Collections</a>
+    <a href="/new-arrivals/">New Arrivals</a>
+    <a href="/best-sellers/">Best Sellers</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
   </nav>
 
   <main>
     <div class="page-banner">
-      <h1>New Arrivals &#10024;</h1>
-      <p>Fresh designs added every week &mdash; be the first to bloom</p>
+      <h1>Our Jewellery Collection</h1>
+      <p>Beautifully crafted, anti-tarnish pieces for every occasion</p>
     </div>
 
     <section class="section">
       <div class="container">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="necklaces">Necklaces</button>
+          <button class="filter-btn" data-filter="earrings">Earrings</button>
+          <button class="filter-btn" data-filter="bracelets">Bracelets</button>
+          <button class="filter-btn" data-filter="rings">Rings</button>
+          <button class="filter-btn" data-filter="anklets">Anklets</button>
+        </div>
+
         <div class="products-grid">
 
-          <div class="product-card fade-in">
+          <div class="product-card fade-in" data-category="necklaces">
             <div class="product-card-img">
               <img src="https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?w=400&h=400&fit=crop&auto=format" alt="Butterfly Pendant Necklace" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
+              <span class="product-badge badge-new">New</span>
             </div>
             <div class="product-card-body">
               <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -71,10 +81,10 @@
             </div>
           </div>
 
-          <div class="product-card fade-in fade-in-delay-1">
+          <div class="product-card fade-in" data-category="earrings">
             <div class="product-card-img">
               <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop&auto=format" alt="Crystal Drop Earrings" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
+              <span class="product-badge badge-new">New</span>
             </div>
             <div class="product-card-body">
               <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -84,36 +94,10 @@
             </div>
           </div>
 
-          <div class="product-card fade-in fade-in-delay-2">
-            <div class="product-card-img">
-              <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=400&fit=crop&auto=format" alt="Heart Layered Necklace" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
-            </div>
-            <div class="product-card-body">
-              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <h3 class="product-name">Heart Layered Necklace</h3>
-              <div class="product-price-row"><span class="price-current">&#8377;549</span><span class="price-original">&#8377;899</span><span class="price-discount">39% off</span></div>
-              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Heart%20Layered%20Necklace%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
-            </div>
-          </div>
-
-          <div class="product-card fade-in fade-in-delay-3">
-            <div class="product-card-img">
-              <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=400&fit=crop&auto=format" alt="Pearl Stud Earrings" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
-            </div>
-            <div class="product-card-body">
-              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <h3 class="product-name">Pearl Stud Earrings</h3>
-              <div class="product-price-row"><span class="price-current">&#8377;199</span><span class="price-original">&#8377;349</span><span class="price-discount">43% off</span></div>
-              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Pearl%20Stud%20Earrings%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
-            </div>
-          </div>
-
-          <div class="product-card fade-in">
+          <div class="product-card fade-in" data-category="bracelets">
             <div class="product-card-img">
               <img src="https://images.unsplash.com/photo-1573408301185-9519f94815f4?w=400&h=400&fit=crop&auto=format" alt="Rose Gold Charm Bracelet" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
+              <span class="product-badge badge-bestseller">Bestseller</span>
             </div>
             <div class="product-card-body">
               <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
@@ -123,10 +107,34 @@
             </div>
           </div>
 
-          <div class="product-card fade-in fade-in-delay-1">
+          <div class="product-card fade-in" data-category="necklaces">
+            <div class="product-card-img">
+              <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=400&fit=crop&auto=format" alt="Heart Layered Necklace" loading="lazy">
+              <span class="product-badge badge-bestseller">Bestseller</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3 class="product-name">Heart Layered Necklace</h3>
+              <div class="product-price-row"><span class="price-current">&#8377;549</span><span class="price-original">&#8377;899</span><span class="price-discount">39% off</span></div>
+              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Heart%20Layered%20Necklace%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="product-card fade-in" data-category="earrings">
+            <div class="product-card-img">
+              <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=400&fit=crop&auto=format" alt="Pearl Stud Earrings" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3 class="product-name">Pearl Stud Earrings</h3>
+              <div class="product-price-row"><span class="price-current">&#8377;199</span><span class="price-original">&#8377;349</span><span class="price-discount">43% off</span></div>
+              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Pearl%20Stud%20Earrings%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="product-card fade-in" data-category="rings">
             <div class="product-card-img">
               <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=400&fit=crop&auto=format" alt="Infinity Love Ring" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
             </div>
             <div class="product-card-body">
               <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
@@ -136,10 +144,10 @@
             </div>
           </div>
 
-          <div class="product-card fade-in fade-in-delay-2">
+          <div class="product-card fade-in" data-category="anklets">
             <div class="product-card-img">
               <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop&auto=format" alt="Daisy Chain Anklet" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
+              <span class="product-badge badge-new">New</span>
             </div>
             <div class="product-card-body">
               <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -149,10 +157,60 @@
             </div>
           </div>
 
-          <div class="product-card fade-in fade-in-delay-3">
+          <div class="product-card fade-in" data-category="earrings">
+            <div class="product-card-img">
+              <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=400&h=400&fit=crop&auto=format" alt="Diamond Cut Hoops" loading="lazy">
+              <span class="product-badge badge-bestseller">Bestseller</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3 class="product-name">Diamond Cut Hoops</h3>
+              <div class="product-price-row"><span class="price-current">&#8377;379</span><span class="price-original">&#8377;649</span><span class="price-discount">42% off</span></div>
+              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Diamond%20Cut%20Hoops%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="product-card fade-in" data-category="necklaces">
+            <div class="product-card-img">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop&auto=format" alt="Minimal Bar Necklace" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+              <h3 class="product-name">Minimal Bar Necklace</h3>
+              <div class="product-price-row"><span class="price-current">&#8377;329</span><span class="price-original">&#8377;549</span><span class="price-discount">40% off</span></div>
+              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Minimal%20Bar%20Necklace%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="product-card fade-in" data-category="bracelets">
+            <div class="product-card-img">
+              <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=400&h=400&fit=crop&auto=format" alt="Twisted Gold Bangle" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3 class="product-name">Twisted Gold Bangle</h3>
+              <div class="product-price-row"><span class="price-current">&#8377;499</span><span class="price-original">&#8377;799</span><span class="price-discount">38% off</span></div>
+              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Twisted%20Gold%20Bangle%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="product-card fade-in" data-category="rings">
+            <div class="product-card-img">
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop&auto=format" alt="Flower Bloom Ring" loading="lazy">
+              <span class="product-badge badge-bestseller">Bestseller</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3 class="product-name">Flower Bloom Ring</h3>
+              <div class="product-price-row"><span class="price-current">&#8377;299</span><span class="price-original">&#8377;499</span><span class="price-discount">40% off</span></div>
+              <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Flower%20Bloom%20Ring%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="product-card fade-in" data-category="necklaces">
             <div class="product-card-img">
               <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=400&fit=crop&auto=format" alt="Starlight Pendant" loading="lazy">
-              <span class="product-badge badge-new">Just Dropped</span>
+              <span class="product-badge badge-new">New</span>
             </div>
             <div class="product-card-body">
               <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -171,28 +229,28 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="images/TaraBloom Round Logo.png" alt="TaraBloom Logo">
+          <img src="/images/TaraBloom Round Logo.png" alt="TaraBloom Logo">
           <div class="footer-brand-name">TaraBloom</div>
           <p>Elegant, affordable &amp; anti-tarnish jewellery for every woman.</p>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="collections.html">Collections</a></li>
-            <li><a href="new-arrivals.html">New Arrivals</a></li>
-            <li><a href="best-sellers.html">Best Sellers</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/collections/">Collections</a></li>
+            <li><a href="/new-arrivals/">New Arrivals</a></li>
+            <li><a href="/best-sellers/">Best Sellers</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Customer Service</h4>
           <ul>
-            <li><a href="contact.html">Shipping Info</a></li>
-            <li><a href="contact.html">Returns &amp; Exchanges</a></li>
-            <li><a href="contact.html">FAQ</a></li>
-            <li><a href="contact.html">Size Guide</a></li>
+            <li><a href="/contact/">Shipping Info</a></li>
+            <li><a href="/contact/">Returns &amp; Exchanges</a></li>
+            <li><a href="/contact/">FAQ</a></li>
+            <li><a href="/contact/">Size Guide</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -222,6 +280,6 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

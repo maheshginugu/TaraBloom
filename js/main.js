@@ -52,10 +52,13 @@
   /* --------------------------------------------------
      Active nav link highlight
   -------------------------------------------------- */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const pathname = window.location.pathname;
   document.querySelectorAll('.main-nav a, .mobile-nav a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    if (!href) return;
+    const normalizedPathname = pathname.replace(/\/$/, '') || '/';
+    const normalizedHref = href.replace(/\/$/, '') || '/';
+    if (normalizedPathname === normalizedHref) {
       link.classList.add('active');
     }
   });
