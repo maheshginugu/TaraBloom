@@ -1,226 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Elegant jewellery for women. Discover anti tarnish jewellery, necklaces, earrings and bracelets from TaraBloom.">
-<meta name="keywords" content="jewellery, earrings, necklace, bracelet, tarabloom, anti tarnish jewellery, anti-tarnish">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<title>TaraBloom | Elegant Jewellery</title>
-<style>
-
-body{
-font-family:'Poppins', sans-serif;
-}
-
-h1,h2,h3{
-font-family:'Playfair Display', serif;
-}
-
-header{
-background:#f8d7e1;
-padding:20px;
-text-align:center;
-font-size:30px;
-font-weight:bold;
-}
-
-nav{
-text-align:center;
-padding:12px;
-background:white;
-}
-
-nav a{
-margin:0 15px;
-text-decoration:none;
-color:#333;
-font-weight:bold;
-}
-
-.hero{
-text-align:center;
-padding:90px 20px;
-background:linear-gradient(#fde6ee,#ffffff);
-}
-
-.hero h1{
-font-size:42px;
-}
-
-.hero p{
-font-size:18px;
-color:#555;
-}
-
-.btn{
-display:inline-block;
-padding:12px 25px;
-background:#e75480;
-color:white;
-border-radius:25px;
-text-decoration:none;
-margin-top:20px;
-}
-
-.section{
-padding:50px 20px;
-text-align:center;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-max-width:1000px;
-margin:auto;
-}
-  
-.card{
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 8px 25px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 12px 30px rgba(0,0,0,0.12);
-}
-
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:8px;
-}
-
-.price{
-color:#e75480;
-font-weight:bold;
-}
-
-.whatsapp{
-display:inline-block;
-margin-top:10px;
-padding:8px 15px;
-background:#25D366;
-color:white;
-text-decoration:none;
-border-radius:20px;
-}
-
-.logo{
-height:80px;
-width:auto;
-display:block;
-margin:auto;
-}
-
-footer{
-background:#f8d7e1;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaraBloom | Jewellery that Blooms Elegance</title>
+  <meta name="description" content="Discover beautifully crafted, anti-tarnish jewellery for women. Affordable luxury necklaces, earrings, bracelets and rings from TaraBloom.">
+  <meta name="keywords" content="jewellery, anti-tarnish jewellery, necklace, earrings, bracelets, rings, tarabloom, affordable jewellery for women">
+  <meta property="og:title" content="TaraBloom | Jewellery that Blooms Elegance">
+  <meta property="og:description" content="Affordable &amp; anti-tarnish jewellery crafted to celebrate every moment.">
+  <meta property="og:image" content="images/TaraBloom Square Logo.png">
+  <meta property="og:url" content="https://tarabloom.in/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="images/TaraBloom Square Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-<header>
-TaraBloom
-<img src="images/TaraBloom Round Logo.png" class="logo">
-</header>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="images/TaraBloom Round Logo.png" alt="TaraBloom Logo">
+        <span class="brand-name">TaraBloom</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="best-sellers.html">Best Sellers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" title="Search"><i class="fas fa-search"></i></a>
+        <a href="https://wa.me/918247382157" title="Order on WhatsApp" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i></a>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-  
-<nav>
-<a href="#">Home</a>
-<a href="#">Collections</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="new-arrivals.html">New Arrivals</a>
+    <a href="best-sellers.html">Best Sellers</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-<section class="hero">
+  <main>
 
-<h1>Jewellery that Blooms Elegance ✨</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">New Arrivals Every Week</span>
+        <h1>Jewellery that <span>Blooms</span><br>Elegance &#10024;</h1>
+        <p>Discover beautifully crafted, anti-tarnish jewellery designed to celebrate every moment of your life.</p>
+        <div class="hero-cta">
+          <a href="collections.html" class="btn btn-primary">Shop Collection <i class="fas fa-arrow-right"></i></a>
+          <a href="new-arrivals.html" class="btn btn-outline">New Arrivals</a>
+        </div>
+        <div class="hero-trust">
+          <span>Anti-Tarnish</span>
+          <span>Free Delivery &#8377;499+</span>
+          <span>Easy Returns</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>Discover beautifully crafted jewellery designed to celebrate every moment.</p>
+  <!-- FEATURED COLLECTIONS -->
+  <section class="section collections-bg">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Our Collections</h2>
+        <p>Handpicked jewellery for every occasion and every style</p>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="category-grid">
+        <a href="collections.html" class="category-card fade-in">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=600&fit=crop&auto=format" alt="Necklaces" loading="lazy">
+          <div class="category-card-overlay"><h3>Necklaces</h3><span>Shop Now</span></div>
+        </a>
+        <a href="collections.html" class="category-card fade-in fade-in-delay-1">
+          <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=600&h=600&fit=crop&auto=format" alt="Earrings" loading="lazy">
+          <div class="category-card-overlay"><h3>Earrings</h3><span>Shop Now</span></div>
+        </a>
+        <a href="collections.html" class="category-card fade-in fade-in-delay-2">
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=600&fit=crop&auto=format" alt="Bracelets" loading="lazy">
+          <div class="category-card-overlay"><h3>Bracelets</h3><span>Shop Now</span></div>
+        </a>
+        <a href="collections.html" class="category-card fade-in fade-in-delay-3">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop&auto=format" alt="Rings" loading="lazy">
+          <div class="category-card-overlay"><h3>Rings</h3><span>Shop Now</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<a class="btn" href="https://wa.me/918247382157">Shop on WhatsApp</a>
+  <!-- NEW ARRIVALS CAROUSEL -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>New Arrivals</h2>
+        <p>Fresh designs added every week &mdash; be the first to wear them</p>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="carousel-wrapper fade-in">
+        <button class="carousel-btn carousel-btn-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track-outer">
+          <div class="carousel-track">
 
-</section>
+            <div class="product-card">
+              <div class="product-card-img">
+                <img src="https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?w=400&h=400&fit=crop&auto=format" alt="Butterfly Pendant Necklace" loading="lazy">
+                <span class="product-badge badge-new">New</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <h3 class="product-name">Butterfly Pendant Necklace</h3>
+                <div class="product-price-row">
+                  <span class="price-current">&#8377;399</span>
+                  <span class="price-original">&#8377;699</span>
+                  <span class="price-discount">43% off</span>
+                </div>
+                <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Butterfly%20Pendant%20Necklace%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+              </div>
+            </div>
 
-<section class="section">
+            <div class="product-card">
+              <div class="product-card-img">
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop&auto=format" alt="Crystal Drop Earrings" loading="lazy">
+                <span class="product-badge badge-new">New</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <h3 class="product-name">Crystal Drop Earrings</h3>
+                <div class="product-price-row">
+                  <span class="price-current">&#8377;299</span>
+                  <span class="price-original">&#8377;499</span>
+                  <span class="price-discount">40% off</span>
+                </div>
+                <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Crystal%20Drop%20Earrings%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+              </div>
+            </div>
 
-<h2>New Arrivals</h2>
+            <div class="product-card">
+              <div class="product-card-img">
+                <img src="https://images.unsplash.com/photo-1573408301185-9519f94815f4?w=400&h=400&fit=crop&auto=format" alt="Rose Gold Charm Bracelet" loading="lazy">
+                <span class="product-badge badge-new">New</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <h3 class="product-name">Rose Gold Charm Bracelet</h3>
+                <div class="product-price-row">
+                  <span class="price-current">&#8377;449</span>
+                  <span class="price-original">&#8377;799</span>
+                  <span class="price-discount">44% off</span>
+                </div>
+                <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Rose%20Gold%20Charm%20Bracelet%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+              </div>
+            </div>
 
-<div class="products">
+            <div class="product-card">
+              <div class="product-card-img">
+                <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=400&fit=crop&auto=format" alt="Heart Layered Necklace" loading="lazy">
+                <span class="product-badge badge-new">New</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <h3 class="product-name">Heart Layered Necklace</h3>
+                <div class="product-price-row">
+                  <span class="price-current">&#8377;549</span>
+                  <span class="price-original">&#8377;899</span>
+                  <span class="price-discount">39% off</span>
+                </div>
+                <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Heart%20Layered%20Necklace%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+              </div>
+            </div>
 
-<div class="card">
-<img src="images/TaraBloom Square Logo.png">
-<h3>Butterfly Necklace</h3>
-<p class="price">₹399</p>
-<a class="whatsapp" href="https://wa.me/918247382157">Order</a>
-</div>
+            <div class="product-card">
+              <div class="product-card-img">
+                <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=400&fit=crop&auto=format" alt="Pearl Stud Earrings" loading="lazy">
+                <span class="product-badge badge-new">New</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <h3 class="product-name">Pearl Stud Earrings</h3>
+                <div class="product-price-row">
+                  <span class="price-current">&#8377;199</span>
+                  <span class="price-original">&#8377;349</span>
+                  <span class="price-discount">43% off</span>
+                </div>
+                <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Pearl%20Stud%20Earrings%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+              </div>
+            </div>
 
-<div class="card">
-<img src="https://picsum.photos/300?2">
-<h3>Crystal Earrings</h3>
-<p class="price">₹299</p>
-<a class="whatsapp" href="https://wa.me/918247382157">Order</a>
-</div>
+            <div class="product-card">
+              <div class="product-card-img">
+                <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=400&fit=crop&auto=format" alt="Infinity Love Ring" loading="lazy">
+                <span class="product-badge badge-new">New</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <h3 class="product-name">Infinity Love Ring</h3>
+                <div class="product-price-row">
+                  <span class="price-current">&#8377;349</span>
+                  <span class="price-original">&#8377;599</span>
+                  <span class="price-discount">42% off</span>
+                </div>
+                <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Infinity%20Love%20Ring%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+              </div>
+            </div>
 
-<div class="card">
-<img src="https://picsum.photos/300?3">
-<h3>Charm Bracelet</h3>
-<p class="price">₹349</p>
-<a class="whatsapp" href="https://wa.me/918247382157">Order</a>
-</div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-btn-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<img src="https://picsum.photos/300?4">
-<h3>Heart Pendant</h3>
-<p class="price">₹329</p>
-<a class="whatsapp" href="https://wa.me/918247382157">Order</a>
-</div>
+  <!-- BEST SELLERS -->
+  <section class="section collections-bg">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Best Sellers &#128142;</h2>
+        <p>Loved by 10,000+ customers &mdash; our all-time favourites</p>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="products-grid">
 
-</div>
+        <div class="product-card fade-in">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop&auto=format" alt="Rose Gold Charm Bracelet" loading="lazy">
+            <span class="product-badge badge-bestseller">Bestseller</span>
+          </div>
+          <div class="product-card-body">
+            <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3 class="product-name">Rose Gold Charm Bracelet</h3>
+            <div class="product-price-row">
+              <span class="price-current">&#8377;449</span>
+              <span class="price-original">&#8377;799</span>
+              <span class="price-discount">44% off</span>
+            </div>
+            <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Rose%20Gold%20Charm%20Bracelet%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+          </div>
+        </div>
 
-</section>
+        <div class="product-card fade-in fade-in-delay-1">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=400&h=400&fit=crop&auto=format" alt="Diamond Cut Hoops" loading="lazy">
+            <span class="product-badge badge-bestseller">Bestseller</span>
+          </div>
+          <div class="product-card-body">
+            <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3 class="product-name">Diamond Cut Hoops</h3>
+            <div class="product-price-row">
+              <span class="price-current">&#8377;379</span>
+              <span class="price-original">&#8377;649</span>
+              <span class="price-discount">42% off</span>
+            </div>
+            <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Diamond%20Cut%20Hoops%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+          </div>
+        </div>
 
-<section class="section">
+        <div class="product-card fade-in fade-in-delay-2">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop&auto=format" alt="Minimal Bar Necklace" loading="lazy">
+            <span class="product-badge badge-bestseller">Bestseller</span>
+          </div>
+          <div class="product-card-body">
+            <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <h3 class="product-name">Minimal Bar Necklace</h3>
+            <div class="product-price-row">
+              <span class="price-current">&#8377;329</span>
+              <span class="price-original">&#8377;549</span>
+              <span class="price-discount">40% off</span>
+            </div>
+            <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Minimal%20Bar%20Necklace%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+          </div>
+        </div>
 
-<h2>Why Choose TaraBloom</h2>
+        <div class="product-card fade-in fade-in-delay-3">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop&auto=format" alt="Flower Bloom Ring" loading="lazy">
+            <span class="product-badge badge-bestseller">Bestseller</span>
+          </div>
+          <div class="product-card-body">
+            <div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3 class="product-name">Flower Bloom Ring</h3>
+            <div class="product-price-row">
+              <span class="price-current">&#8377;299</span>
+              <span class="price-original">&#8377;499</span>
+              <span class="price-discount">40% off</span>
+            </div>
+            <a href="https://wa.me/918247382157?text=Hi!%20I%20want%20to%20order%20Flower%20Bloom%20Ring%20from%20TaraBloom" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Add to Cart</a>
+          </div>
+        </div>
 
-<p>✨ Elegant everyday jewellery</p>
-<p>💎 Affordable luxury designs</p>
-<p>🚚 Delivery across India</p>
-<p>🎁 Perfect gift for special moments</p>
+      </div>
+      <div class="view-all-row">
+        <a href="best-sellers.html" class="btn btn-outline">View All Best Sellers</a>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <!-- WHY TARABLOOM -->
+  <section class="section trust-bg">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Why TaraBloom?</h2>
+        <p>Everything we do is for you &mdash; our promises that never tarnish</p>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card fade-in"><span class="trust-icon">&#10024;</span><h4>Anti-Tarnish Quality</h4><p>Jewellery that stays beautiful, day after day</p></div>
+        <div class="trust-card fade-in fade-in-delay-1"><span class="trust-icon">&#128142;</span><h4>Affordable Luxury</h4><p>Premium designs without the premium price tag</p></div>
+        <div class="trust-card fade-in fade-in-delay-2"><span class="trust-icon">&#128664;</span><h4>Free Delivery &#8377;499+</h4><p>Free shipping on orders above &#8377;499 across India</p></div>
+        <div class="trust-card fade-in fade-in-delay-3"><span class="trust-icon">&#127873;</span><h4>Gift Packaging</h4><p>Every order comes in beautiful gift packaging</p></div>
+        <div class="trust-card fade-in"><span class="trust-icon">&#128274;</span><h4>Secure Checkout</h4><p>100% secure payments via WhatsApp &amp; UPI</p></div>
+        <div class="trust-card fade-in fade-in-delay-1"><span class="trust-icon">&#8617;&#65039;</span><h4>Easy Returns</h4><p>Hassle-free returns within 7 days of delivery</p></div>
+      </div>
+    </div>
+  </section>
 
-<footer>
+  <!-- INSTAGRAM GALLERY -->
+  <section class="section insta-bg">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Follow Us @tarabloom.in</h2>
+        <p>Tag us in your photos for a chance to be featured</p>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="insta-grid fade-in">
+        <a href="https://instagram.com/tarabloom.in" class="insta-item" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop&auto=format" alt="Instagram post" loading="lazy"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://instagram.com/tarabloom.in" class="insta-item" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=400&h=400&fit=crop&auto=format" alt="Instagram post" loading="lazy"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://instagram.com/tarabloom.in" class="insta-item" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop&auto=format" alt="Instagram post" loading="lazy"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://instagram.com/tarabloom.in" class="insta-item" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1573408301185-9519f94815f4?w=400&h=400&fit=crop&auto=format" alt="Instagram post" loading="lazy"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://instagram.com/tarabloom.in" class="insta-item" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=400&fit=crop&auto=format" alt="Instagram post" loading="lazy"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://instagram.com/tarabloom.in" class="insta-item" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=400&fit=crop&auto=format" alt="Instagram post" loading="lazy"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></a>
+      </div>
+      <div class="view-all-row">
+        <a href="https://instagram.com/tarabloom.in" class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
 
-<p><strong>TaraBloom</strong></p>
+  <!-- NEWSLETTER -->
+  <section class="section newsletter-bg">
+    <div class="container">
+      <h2 class="fade-in">Join the TaraBloom Family</h2>
+      <p class="fade-in">Get exclusive offers, new arrival alerts and styling tips delivered to your inbox.</p>
+      <form class="newsletter-form fade-in" novalidate>
+        <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
 
-<p>Elegant jewellery designed to make you bloom.</p>
+  </main>
 
-<p>
-Follow us on Instagram  
-<a href="https://instagram.com/tarabloom.in">@tarabloom.in</a>
-</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/TaraBloom Round Logo.png" alt="TaraBloom Logo">
+          <div class="footer-brand-name">TaraBloom</div>
+          <p>Elegant, affordable &amp; anti-tarnish jewellery for every woman. Crafted with love, delivered with care.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="best-sellers.html">Best Sellers</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="contact.html">Shipping Info</a></li>
+            <li><a href="contact.html">Returns &amp; Exchanges</a></li>
+            <li><a href="contact.html">FAQ</a></li>
+            <li><a href="contact.html">Size Guide</a></li>
+            <li><a href="contact.html">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <div class="footer-social">
+            <a href="https://instagram.com/tarabloom.in" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @tarabloom.in</a>
+            <a href="https://wa.me/918247382157" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+            <a href="mailto:tarabloom.in@gmail.com"><i class="fas fa-envelope"></i> tarabloom.in@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <div class="footer-trust-row">
+            <span><i class="fas fa-lock"></i> Secure Payment</span>
+            <span><i class="fas fa-star"></i> Anti-Tarnish Guarantee</span>
+            <span><i class="fas fa-truck"></i> Free Shipping &#8377;499+</span>
+          </div>
+          <p class="footer-copy">&#169; 2026 TaraBloom. All rights reserved.</p>
+          <div class="footer-payment">Visa | Mastercard | UPI | COD</div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<p>© 2026 TaraBloom</p>
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/918247382157" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-</footer>
-
-<a href="https://wa.me/918247382157" 
-style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;">
-💬
-</a>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
