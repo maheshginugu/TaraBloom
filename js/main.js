@@ -202,7 +202,7 @@
   var modalThumbs   = document.getElementById('tb-modal-thumbs');
   var modalTitle    = document.getElementById('tb-modal-title');
   var modalPrice    = document.getElementById('tb-modal-price');
-  var modalWhatsapp = document.getElementById('tb-modal-whatsapp');
+  var modalAddCart  = document.getElementById('tb-modal-add-cart');
   var modalPrev     = document.getElementById('tb-modal-prev');
   var modalNext     = document.getElementById('tb-modal-next');
 
@@ -345,10 +345,6 @@
     var priceCurrent  = card.querySelector('.price-current')  ? card.querySelector('.price-current').textContent.trim()  : '';
     var priceOriginal = card.querySelector('.price-original') ? card.querySelector('.price-original').textContent.trim() : '';
 
-    // WhatsApp href
-    var waLink = card.querySelector('a.btn-whatsapp');
-    var waHref = waLink ? waLink.getAttribute('href') : '#';
-
     // Populate modal
     if (modalTitle)    modalTitle.textContent = name;
     if (modalPrice) {
@@ -357,8 +353,9 @@
           '<span class="tb-price-original">' + priceOriginal + '</span>'
         : '<span class="tb-price-current">' + priceCurrent + '</span>';
     }
-    if (modalWhatsapp) {
-      modalWhatsapp.href = waHref;
+    if (modalAddCart) {
+      modalAddCart.dataset.name = name;
+      modalAddCart.dataset.price = priceCurrent;
     }
 
     // Build thumbnails
