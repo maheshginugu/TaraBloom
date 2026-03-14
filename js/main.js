@@ -187,7 +187,7 @@
      PRODUCT QUICK-VIEW MODAL
      ============================================= */
   var modal = document.getElementById('tb-product-modal');
-  if (!modal) return;
+  if (modal) {
 
   var modalMainImg  = document.getElementById('tb-modal-mainimg');
   var modalThumbs   = document.getElementById('tb-modal-thumbs');
@@ -350,11 +350,6 @@
     }
     if (modalWhatsapp) {
       modalWhatsapp.href = waHref;
-      modalWhatsapp.textContent = '';
-      var waIcon = document.createElement('i');
-      waIcon.className = 'fab fa-whatsapp';
-      modalWhatsapp.appendChild(waIcon);
-      modalWhatsapp.appendChild(document.createTextNode(' Order on WhatsApp'));
     }
 
     // Build thumbnails
@@ -384,5 +379,7 @@
 
     openModal();
   });
+
+  } // end if (modal)
 
 }());
