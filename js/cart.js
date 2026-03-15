@@ -176,26 +176,37 @@
      ============================================= */
 
   function buildWhatsAppUrl(cart, customer) {
-    var lines = ['Hi! I want to order the following items from TaraBloom:'];
-    cart.forEach(function (item) {
-      lines.push('\u2022 ' + item.name + (item.price ? ' \u2014 ' + item.price : '') + ' x' + item.qty);
-    });
-    if (customer && customer.fullName) {
-      lines.push('\n*Delivery Details:*');
-      lines.push('Name: ' + customer.fullName);
-      if (customer.phone) lines.push('Phone: ' + customer.phone);
-      if (customer.email) lines.push('Email: ' + customer.email);
-      var addr = customer.address1 || '';
-      if (customer.address2) addr += ', ' + customer.address2;
-      if (customer.city) addr += ', ' + customer.city;
-      if (customer.state) addr += ', ' + customer.state;
-      if (customer.pin) addr += ' \u2014 ' + customer.pin;
-      if (addr) lines.push('Address: ' + addr);
-    }
-    lines.push('\nKindly confirm availability and total. Thank you! \uD83C\uDF38');
-    var text = lines.join('\n');
-    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  var lines = ['Hi! I want to order the following items from TaraBloom:'];
+  cart.forEach(function (item) {
+    lines.push('\u2022 ' + item.name + (item.price ? ' \u2014 ' + item.price : '') + ' x' + item.qty);
+  });
+
+  // Added: order summary details
+  var summary = calcOrderSummary(cart);
+  lines.push('\n*Order Summary:*');
+  lines.push('Subtotal: \u20b9' + summary.subtotal);
+  lines.push('Shipping: ' + (summary.shipping === 0 ? 'FREE' : '\u20b9' + summary.shipping));
+  lines.push('Total Payment: \u20b9' + summary.total);
+
+  if (customer && customer.fullName) {
+    lines.push('\n*Delivery Details:*');
+    lines.push('Name: ' + customer.fullName);
+    if (customer.phone) lines.push('Phone: ' + customer.phone);
+    if (customer.email) lines.push('Email: ' + customer.email);
+    var addr = customer.address1 || '';
+    if (customer.address2) addr += ', ' + customer.address2;
+    if (customer.city) addr += ', ' + customer.city;
+    if (customer.state) addr += ', ' + customer.state;
+    if (customer.pin) addr += ' \u2014 ' + customer.pin;
+    if (addr) lines.push('Address: ' + addr);
   }
+
+  // Updated closing message (removed "and total" and removed flower emoji)
+  lines.push('\nKindly confirm availability. Thank you!');
+
+  var text = lines.join('\n');
+  return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+}
 
   /* =============================================
      CUSTOMER DETAILS FORM RENDER
