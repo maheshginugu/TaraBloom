@@ -351,6 +351,8 @@
     document.body.classList.add('tb-cart-open');
     var closeBtn = drawer.querySelector('.tb-cart-close');
     if (closeBtn) closeBtn.focus();
+    var waFloat = document.querySelector('.whatsapp-float');
+    if (waFloat) waFloat.style.display = 'none';
   }
 
   function closeDrawer() {
@@ -359,6 +361,8 @@
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('tb-cart-open');
+    var waFloat = document.querySelector('.whatsapp-float');
+    if (waFloat) waFloat.style.display = '';
   }
 
   /* =============================================
@@ -518,7 +522,9 @@
         renderCartDrawer: renderCartDrawer,
         calcOrderSummary: calcOrderSummary,
         renderOrderSummary: renderOrderSummary,
-        parsePrice: parsePrice
+        parsePrice: parsePrice,
+        openDrawer: openDrawer,
+        closeDrawer: closeDrawer
       }
     };
   }

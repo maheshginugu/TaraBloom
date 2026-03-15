@@ -24,7 +24,8 @@ function setupDOM() {
           <a class="btn btn-whatsapp" id="tb-cart-whatsapp" href="#">Send Cart to WhatsApp</a>
         </div>
       </div>
-    </div>`;
+    </div>
+    <a href="https://wa.me/918247382157" class="whatsapp-float" aria-label="Chat on WhatsApp"></a>`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -62,7 +63,9 @@ const {
   renderCustomerForm,
   renderCartDrawer,
   calcOrderSummary,
-  renderOrderSummary
+  renderOrderSummary,
+  openDrawer,
+  closeDrawer
 } = _test;
 
 /* ================================================================== */
@@ -476,5 +479,34 @@ describe('renderOrderSummary', () => {
     const formIdx = body.innerHTML.indexOf('tb-customer-form');
     expect(itemsIdx).toBeLessThan(summaryIdx);
     expect(summaryIdx).toBeLessThan(formIdx);
+  });
+});
+
+/* ================================================================== */
+/*  SECTION 8: WhatsApp floater visibility with cart drawer            */
+/* ================================================================== */
+describe('WhatsApp floater visibility', () => {
+  beforeEach(() => {
+    setupDOM();
+    localStorage.clear();
+  });
+
+  test('opening the cart drawer hides the WhatsApp floater', () => {
+    const floater = document.querySelector('.whatsapp-float');
+    expect(floater).not.toBeNull();
+    openDrawer();
+    expect(floater.style.display).toBe('none');
+  });
+
+  test('closing the cart drawer restores the WhatsApp floater', () => {
+    const floater = document.querySelector('.whatsapp-float');
+    openDrawer();
+    closeDrawer();
+    expect(floater.style.display).toBe('');
+  });
+
+  test('floater is visible by default (drawer closed)', () => {
+    const floater = document.querySelector('.whatsapp-float');
+    expect(floater.style.display).not.toBe('none');
   });
 });
