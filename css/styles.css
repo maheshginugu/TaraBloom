@@ -376,6 +376,9 @@ body { padding-top: var(--header-h); }
 .badge-new { background: var(--accent-pink); color: var(--white); }
 .badge-bestseller { background: var(--rose-gold); color: var(--white); }
 .badge-sale { background: #ff6b35; color: var(--white); }
+.badge-limited-stock { background: #c0392b; color: var(--white); }
+.badge-trending { background: #6c3483; color: var(--white); }
+.badge-most-loved { background: #c71585; color: var(--white); }
 
 .product-card-body {
   padding: 16px;
@@ -468,10 +471,37 @@ body { padding-top: var(--header-h); }
   border-radius: 50%;
 }
 
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 620px;
+  max-width: 580px;
+}
+
+.hero-visual {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-visual img {
+  width: 100%;
+  max-width: 480px;
+  height: 560px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-badge {
@@ -1202,6 +1232,9 @@ body { padding-top: var(--header-h); }
   .hamburger { display: flex; }
 
   .hero h1 { font-size: 2.4rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-visual { order: -1; }
+  .hero-visual img { height: 380px; max-width: 100%; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
 
@@ -1222,6 +1255,8 @@ body { padding-top: var(--header-h); }
   .hero { min-height: 75vh; padding: 40px 0; }
   .hero h1 { font-size: 1.9rem; }
   .hero p { font-size: 0.92rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+  .hero-visual img { height: 300px; }
 
   .section { padding: 55px 0; }
 
@@ -1380,6 +1415,8 @@ body { padding-top: var(--header-h); }
 @media (max-width: 600px) {
   .team-grid { grid-template-columns: 1fr; }
 }
+
+
 
 /* =============================================
    PRODUCT QUICK-VIEW MODAL
@@ -1549,24 +1586,27 @@ body.tb-modal-open { overflow: hidden; }
   text-decoration: line-through;
 }
 
-/* WhatsApp CTA inside modal */
-#tb-modal-whatsapp {
+/* Add to Cart button inside modal */
+#tb-modal-add-cart {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 13px 24px;
-  background: #25d366;
+  background: var(--accent-pink);
   color: #fff;
+  border: none;
   border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
-  text-decoration: none;
+  cursor: pointer;
   transition: background var(--transition);
   margin-top: auto;
   width: fit-content;
 }
-#tb-modal-whatsapp:hover,
-#tb-modal-whatsapp:focus-visible { background: #1ebe5d; outline: none; }
+#tb-modal-add-cart:hover,
+#tb-modal-add-cart:focus-visible { background: #c9406a; outline: none; }
+#tb-modal-add-cart:disabled { opacity: 0.75; cursor: not-allowed; }
 
 /* Product card — pointer cursor */
 .product-card { cursor: pointer; }
@@ -1638,28 +1678,6 @@ body.tb-modal-open { overflow: hidden; }
   cursor: not-allowed;
   transform: none;
 }
-
-/* Add to Cart button inside modal */
-#tb-modal-add-cart {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background: var(--accent-pink);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: background var(--transition);
-  margin-top: auto;
-  width: fit-content;
-}
-#tb-modal-add-cart:hover,
-#tb-modal-add-cart:focus-visible { background: #c9406a; outline: none; }
-#tb-modal-add-cart:disabled { opacity: 0.75; cursor: not-allowed; }
 
 /* =============================================
    CART DRAWER

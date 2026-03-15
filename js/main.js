@@ -318,7 +318,7 @@
     var card = e.target.closest('.product-card');
     if (!card) return;
 
-    // Don't open modal if the user clicked a link or button (e.g., WhatsApp CTA)
+    // Don't open modal if the user clicked a link or button (e.g., Add to Cart)
     if (e.target.closest('a, button')) return;
 
     lastFocused = card;
