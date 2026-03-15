@@ -391,9 +391,9 @@
       var price = addBtn.dataset.price || '';
       // If price not stored in data attribute, try to read from parent product card
       if (!price) {
-        var card = addBtn.closest('.product-card, .tb-modal-info');
+        var card = addBtn.closest('.product-card');
         if (card) {
-          var priceEl = card.querySelector('.price-current, .tb-price-current');
+          var priceEl = card.querySelector('.price-current');
           if (priceEl) price = priceEl.textContent.trim();
         }
       }
