@@ -115,6 +115,47 @@
   }
 
   /* =============================================
+     ORDER SUMMARY CALCULATION
+     ============================================= */
+
+  var DEFAULT_SHIPPING = 100;
+  var FREE_SHIPPING_THRESHOLD = 999;
+
+  function parsePrice(price) {
+    return parseFloat(String(price).replace(/[^\d.]/g, '')) || 0;
+  }
+
+  function calcOrderSummary(cart) {
+    var subtotal = cart.reduce(function (sum, item) {
+      return sum + parsePrice(item.price) * item.qty;
+    }, 0);
+    var shipping = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : DEFAULT_SHIPPING;
+    var total = subtotal + shipping;
+    return { subtotal: subtotal, shipping: shipping, total: total };
+  }
+
+  function renderOrderSummary(cart) {
+    var s = calcOrderSummary(cart);
+    return (
+      '<div class="tb-order-summary">' +
+        '<h4 class="tb-order-summary-title">Order Summary</h4>' +
+        '<div class="tb-order-summary-row">' +
+          '<span>Subtotal</span>' +
+          '<span>\u20b9' + s.subtotal + '</span>' +
+        '</div>' +
+        '<div class="tb-order-summary-row">' +
+          '<span>Shipping</span>' +
+          '<span>' + (s.shipping === 0 ? 'FREE' : '\u20b9' + s.shipping) + '</span>' +
+        '</div>' +
+        '<div class="tb-order-summary-row tb-order-summary-total">' +
+          '<span>Total</span>' +
+          '<span>\u20b9' + s.total + '</span>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  /* =============================================
      BADGE — cart item count in header
      ============================================= */
 
@@ -276,6 +317,7 @@
         '</li>';
     });
     html += '</ul>';
+    html += renderOrderSummary(cart);
     html += renderCustomerForm();
     body.innerHTML = html;
 
@@ -462,7 +504,10 @@
         updateQty: updateQty,
         escapeHtml: escapeHtml,
         renderCustomerForm: renderCustomerForm,
-        renderCartDrawer: renderCartDrawer
+        renderCartDrawer: renderCartDrawer,
+        calcOrderSummary: calcOrderSummary,
+        renderOrderSummary: renderOrderSummary,
+        parsePrice: parsePrice
       }
     };
   }

@@ -60,7 +60,9 @@ const {
   updateQty,
   escapeHtml,
   renderCustomerForm,
-  renderCartDrawer
+  renderCartDrawer,
+  calcOrderSummary,
+  renderOrderSummary
 } = _test;
 
 /* ================================================================== */
@@ -372,5 +374,107 @@ describe('escapeHtml', () => {
   });
   test('handles non-string input', () => {
     expect(escapeHtml(42)).toBe('42');
+  });
+});
+
+/* ================================================================== */
+/*  SECTION 6: calcOrderSummary — cart total calculations              */
+/* ================================================================== */
+describe('calcOrderSummary', () => {
+  test('subtotal ₹1000 => shipping ₹0, total ₹1000', () => {
+    const cart = [{ name: 'Ring', price: '₹1000', qty: 1 }];
+    const summary = calcOrderSummary(cart);
+    expect(summary.subtotal).toBe(1000);
+    expect(summary.shipping).toBe(0);
+    expect(summary.total).toBe(1000);
+  });
+
+  test('subtotal ₹999 => shipping ₹100, total ₹1099', () => {
+    const cart = [{ name: 'Ring', price: '₹999', qty: 1 }];
+    const summary = calcOrderSummary(cart);
+    expect(summary.subtotal).toBe(999);
+    expect(summary.shipping).toBe(100);
+    expect(summary.total).toBe(1099);
+  });
+
+  test('subtotal ₹500 => shipping ₹100, total ₹600', () => {
+    const cart = [{ name: 'Bracelet', price: '₹500', qty: 1 }];
+    const summary = calcOrderSummary(cart);
+    expect(summary.subtotal).toBe(500);
+    expect(summary.shipping).toBe(100);
+    expect(summary.total).toBe(600);
+  });
+
+  test('accumulates price * qty across multiple items', () => {
+    const cart = [
+      { name: 'Necklace', price: '₹600', qty: 2 },
+      { name: 'Ring', price: '₹200', qty: 1 }
+    ];
+    const summary = calcOrderSummary(cart);
+    expect(summary.subtotal).toBe(1400);
+    expect(summary.shipping).toBe(0);
+    expect(summary.total).toBe(1400);
+  });
+
+  test('empty cart => subtotal 0, shipping ₹100, total ₹100', () => {
+    const summary = calcOrderSummary([]);
+    expect(summary.subtotal).toBe(0);
+    expect(summary.shipping).toBe(100);
+    expect(summary.total).toBe(100);
+  });
+
+  test('free shipping is strictly > 999, not >= 999', () => {
+    const cartAtThreshold = [{ name: 'Item', price: '₹999', qty: 1 }];
+    const cartAboveThreshold = [{ name: 'Item', price: '₹1000', qty: 1 }];
+    expect(calcOrderSummary(cartAtThreshold).shipping).toBe(100);
+    expect(calcOrderSummary(cartAboveThreshold).shipping).toBe(0);
+  });
+});
+
+/* ================================================================== */
+/*  SECTION 7: renderOrderSummary — HTML rendering                     */
+/* ================================================================== */
+describe('renderOrderSummary', () => {
+  test('contains Subtotal, Shipping and Total labels', () => {
+    const cart = [{ name: 'Ring', price: '₹500', qty: 1 }];
+    const html = renderOrderSummary(cart);
+    expect(html).toContain('Subtotal');
+    expect(html).toContain('Shipping');
+    expect(html).toContain('Total');
+  });
+
+  test('shows FREE when shipping is zero', () => {
+    const cart = [{ name: 'Item', price: '₹1000', qty: 1 }];
+    const html = renderOrderSummary(cart);
+    expect(html).toContain('FREE');
+  });
+
+  test('shows ₹100 shipping when subtotal <= 999', () => {
+    const cart = [{ name: 'Item', price: '₹500', qty: 1 }];
+    const html = renderOrderSummary(cart);
+    expect(html).toContain('100');
+  });
+
+  test('renderCartDrawer includes order summary section for non-empty cart', () => {
+    setupDOM();
+    localStorage.clear();
+    saveCart([{ name: 'Necklace', price: '₹600', qty: 1 }]);
+    renderCartDrawer();
+    const body = document.getElementById('tb-cart-body');
+    expect(body.innerHTML).toContain('tb-order-summary');
+    expect(body.innerHTML).toContain('Order Summary');
+  });
+
+  test('order summary appears between cart items and customer form', () => {
+    setupDOM();
+    localStorage.clear();
+    saveCart([{ name: 'Necklace', price: '₹600', qty: 1 }]);
+    renderCartDrawer();
+    const body = document.getElementById('tb-cart-body');
+    const itemsIdx = body.innerHTML.indexOf('tb-cart-items');
+    const summaryIdx = body.innerHTML.indexOf('tb-order-summary');
+    const formIdx = body.innerHTML.indexOf('tb-customer-form');
+    expect(itemsIdx).toBeLessThan(summaryIdx);
+    expect(summaryIdx).toBeLessThan(formIdx);
   });
 });
