@@ -446,7 +446,29 @@
   <!-- Floating WhatsApp -->
   <a href="https://wa.me/918247382157" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </a>  <!-- Product Quick-View Modal -->
+  <div class="tb-modal" id="tb-product-modal" role="dialog" aria-modal="true" aria-label="Product details" aria-hidden="true">
+    <div class="tb-modal-backdrop" data-modal-close aria-hidden="true"></div>
+    <div class="tb-modal-dialog">
+      <button class="tb-modal-close" type="button" aria-label="Close modal" data-modal-close>&times;</button>
+      <div class="tb-modal-grid">
+        <div class="tb-modal-gallery">
+          <img class="tb-modal-mainimg" id="tb-modal-mainimg" src="" alt="Product image">
+          <button class="tb-modal-nav" id="tb-modal-prev" type="button" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+          <button class="tb-modal-nav" id="tb-modal-next" type="button" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+          <div class="tb-modal-thumbs" id="tb-modal-thumbs" role="list" aria-label="Product images"></div>
+        </div>
+        <div class="tb-modal-info">
+          <h3 class="tb-modal-title" id="tb-modal-title"></h3>
+          <div class="tb-modal-price" id="tb-modal-price"></div>
+          <button class="btn add-to-cart" id="tb-modal-add-cart" type="button" data-name="" data-price="" aria-label="Add to cart">
+            <i class="fas fa-shopping-bag"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
 </body>
