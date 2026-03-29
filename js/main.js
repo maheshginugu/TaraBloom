@@ -110,7 +110,7 @@
         btn.classList.add('active');
         var filter = btn.dataset.filter;
         document.querySelectorAll('.product-card').forEach(function (card) {
-          if (filter === 'all' || card.dataset.category === filter) {
+          if (card.dataset.category === filter) {
             card.style.display = '';
           } else {
             card.style.display = 'none';
@@ -119,13 +119,13 @@
       });
     });
 
-    // On page load, apply category filter from URL query parameter (?category=...)
+    // On page load, apply category filter from URL query parameter (?category=...) or default to the active button
     var urlCategory = new URLSearchParams(window.location.search).get('category');
-    if (urlCategory) {
-      var targetBtn = document.querySelector('.filter-btn[data-filter="' + urlCategory + '"]');
-      if (targetBtn) {
-        targetBtn.click();
-      }
+    var targetBtn = urlCategory
+      ? document.querySelector('.filter-btn[data-filter="' + urlCategory + '"]')
+      : document.querySelector('.filter-btn.active');
+    if (targetBtn) {
+      targetBtn.click();
     }
   }
 
