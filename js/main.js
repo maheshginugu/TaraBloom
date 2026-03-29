@@ -438,6 +438,20 @@
       btn.innerHTML = '<i class="fab fa-whatsapp"></i> Enquire';
       btn.dataset.name  = name;
       btn.dataset.price = price;
+
+      // Add "Out of Stock" badge, replacing any existing badge
+      var imgWrapper = card.querySelector('.product-card-img');
+      if (imgWrapper) {
+        var existingBadge = imgWrapper.querySelector('.product-badge');
+        if (existingBadge && existingBadge.classList.contains('badge-out-of-stock')) return;
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        var badge = document.createElement('span');
+        badge.className = 'product-badge badge-out-of-stock';
+        badge.textContent = 'Out of Stock';
+        imgWrapper.appendChild(badge);
+      }
     });
   }
 
