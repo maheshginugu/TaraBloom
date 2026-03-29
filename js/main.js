@@ -203,6 +203,7 @@
   var modalTitle    = document.getElementById('tb-modal-title');
   var modalPrice    = document.getElementById('tb-modal-price');
   var modalAddCart  = document.getElementById('tb-modal-add-cart');
+  var modalBadge    = modal.querySelector('.modal-product-badge');
   var modalPrev     = document.getElementById('tb-modal-prev');
   var modalNext     = document.getElementById('tb-modal-next');
 
@@ -345,8 +346,26 @@
     var priceCurrent  = card.querySelector('.price-current')  ? card.querySelector('.price-current').textContent.trim()  : '';
     var priceOriginal = card.querySelector('.price-original') ? card.querySelector('.price-original').textContent.trim() : '';
 
+    // Badge
+    var badgeEl    = card.querySelector('.product-badge');
+    var badgeText  = badgeEl ? badgeEl.textContent.trim() : '';
+    var badgeClass = badgeEl
+      ? Array.from(badgeEl.classList)
+          .filter(function (c) { return c !== 'product-badge' && c !== 'modal-product-badge'; })
+          .join(' ')
+      : '';
+
     // Populate modal
     if (modalTitle)    modalTitle.textContent = name;
+    if (modalBadge) {
+      if (badgeText) {
+        modalBadge.className = ('product-badge ' + badgeClass).trim();
+        modalBadge.textContent = badgeText;
+        modalBadge.style.display = '';
+      } else {
+        modalBadge.style.display = 'none';
+      }
+    }
     if (modalPrice) {
       modalPrice.innerHTML = priceOriginal
         ? '<span class="tb-price-current">' + priceCurrent + '</span>' +

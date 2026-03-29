@@ -1565,6 +1565,9 @@ body.tb-modal-open { overflow: hidden; }
 /* Info side */
 .tb-modal-info { display: flex; flex-direction: column; gap: 14px; }
 
+/* Badge inside modal — override card's absolute positioning */
+.tb-modal-info .product-badge { position: static; align-self: flex-start; }
+
 .tb-modal-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.55rem;
