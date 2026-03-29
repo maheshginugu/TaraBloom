@@ -379,6 +379,7 @@ body { padding-top: var(--header-h); }
 .badge-limited-stock { background: #c0392b; color: var(--white); }
 .badge-trending { background: #6c3483; color: var(--white); }
 .badge-most-loved { background: #c71585; color: var(--white); }
+.badge-out-of-stock { background: #7f8c8d; color: var(--white); }
 
 .product-card-body {
   padding: 16px;
