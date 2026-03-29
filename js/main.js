@@ -356,6 +356,18 @@
     if (modalAddCart) {
       modalAddCart.dataset.name = name;
       modalAddCart.dataset.price = priceCurrent;
+      var modalInStock = (card.dataset.inStock || 'true').toLowerCase() !== 'false';
+      if (!modalInStock) {
+        modalAddCart.classList.remove('add-to-cart');
+        modalAddCart.classList.add('enquire-product');
+        modalAddCart.innerHTML = '<i class="fab fa-whatsapp"></i> Enquire';
+        modalAddCart.setAttribute('aria-label', 'Enquire about this product on WhatsApp');
+      } else {
+        modalAddCart.classList.remove('enquire-product');
+        modalAddCart.classList.add('add-to-cart');
+        modalAddCart.innerHTML = '<i class="fas fa-shopping-bag"></i> Add to Cart';
+        modalAddCart.setAttribute('aria-label', 'Add to cart');
+      }
     }
 
     // Build thumbnails
@@ -387,5 +399,55 @@
   });
 
   } // end if (modal)
+
+}());
+
+// ── Out of Stock (OOS) functionality ─────────────────────────────────────────
+
+(function () {
+
+  var WA_NUMBER = '918247382157';
+
+  function buildEnquiryMessage(name, price) {
+    var lines = [
+      'Hi TaraBloom,',
+      'I am interested in the following product:',
+      'Product: ' + (name || 'N/A'),
+      price ? 'Price: ' + price : '',
+      'Status shown: Out of Stock',
+      'Could you please let me know about availability and expected restock timeline?'
+    ].filter(Boolean);
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  function initOosButtons() {
+    document.querySelectorAll('.product-card').forEach(function (card) {
+      var inStock = (card.dataset.inStock || 'true').toLowerCase() !== 'false';
+      if (inStock) return;
+
+      var btn = card.querySelector('.add-to-cart');
+      if (!btn) return;
+
+      var nameEl  = card.querySelector('.product-name');
+      var priceEl = card.querySelector('.price-current');
+      var name  = btn.dataset.name  || (nameEl  ? nameEl.textContent.trim()  : '');
+      var price = btn.dataset.price || (priceEl ? priceEl.textContent.trim() : '');
+
+      btn.classList.remove('add-to-cart');
+      btn.classList.add('enquire-product');
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> Enquire';
+      btn.dataset.name  = name;
+      btn.dataset.price = price;
+    });
+  }
+
+  // Delegate enquire-product clicks (cards and modal)
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.enquire-product');
+    if (!btn) return;
+    window.open(buildEnquiryMessage(btn.dataset.name || '', btn.dataset.price || ''), '_blank');
+  });
+
+  initOosButtons();
 
 }());

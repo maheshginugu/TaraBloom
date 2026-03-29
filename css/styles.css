@@ -1679,6 +1679,18 @@ body.tb-modal-open { overflow: hidden; }
   transform: none;
 }
 
+.enquire-product {
+  background: #25d366;
+  color: var(--white);
+  font-size: 0.82rem;
+  padding: 10px 18px;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+}
+.enquire-product:hover {
+  background: #1da851;
+  transform: translateY(-2px);
+}
+
 /* =============================================
    CART DRAWER
    ============================================= */
