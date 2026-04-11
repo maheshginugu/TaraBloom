@@ -1613,6 +1613,62 @@ body.tb-modal-open { overflow: hidden; }
 #tb-modal-add-cart:focus-visible { background: #c9406a; outline: none; }
 #tb-modal-add-cart:disabled { opacity: 0.75; cursor: not-allowed; }
 
+.tb-modal-colors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tb-modal-colors-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.tb-modal-color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tb-color-option {
+  position: relative;
+  border: 1px solid var(--blush-mid);
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.tb-color-option:hover,
+.tb-color-option:focus-visible {
+  border-color: var(--accent-pink);
+  color: var(--accent-pink);
+  outline: none;
+}
+
+.tb-color-option.is-active {
+  background: var(--accent-pink);
+  color: var(--white);
+  border-color: var(--accent-pink);
+}
+
+.tb-color-option.is-oos {
+  background: #f3f3f3;
+  color: #8a8a8a;
+  border-color: #d2d2d2;
+}
+
+.tb-color-option.is-oos.is-active {
+  background: #6f7782;
+  color: var(--white);
+  border-color: #6f7782;
+}
+
 /* Product card — pointer cursor */
 .product-card { cursor: pointer; }
 /* Keep CTA elements inside card behaving normally */
@@ -1678,6 +1734,15 @@ body.tb-modal-open { overflow: hidden; }
   background: #c9406a;
   transform: translateY(-2px);
 }
+
+.btn-choose-options {
+  background: var(--accent-pink);
+}
+
+.btn-choose-options:hover {
+  background: #c9406a;
+}
+
 .btn-cart:disabled {
   opacity: 0.75;
   cursor: not-allowed;

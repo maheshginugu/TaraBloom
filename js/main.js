@@ -203,12 +203,17 @@
   var modalTitle    = document.getElementById('tb-modal-title');
   var modalPrice    = document.getElementById('tb-modal-price');
   var modalAddCart  = document.getElementById('tb-modal-add-cart');
+  var modalColors   = document.getElementById('tb-modal-colors');
+  var modalColorOps = document.getElementById('tb-modal-color-options');
   var modalBadge    = modal.querySelector('.modal-product-badge');
   var modalPrev     = document.getElementById('tb-modal-prev');
   var modalNext     = document.getElementById('tb-modal-next');
 
   var activeImages = [];
   var activeIndex  = 0;
+  var activeColorOptions = [];
+  var activeColorStock = {};
+  var activeColor = '';
   var lastFocused  = null;
 
   // ── helpers ──────────────────────────────────
@@ -231,6 +236,128 @@
   function updateNavVisibility() {
     if (modalPrev) modalPrev.style.display = activeImages.length > 1 ? '' : 'none';
     if (modalNext) modalNext.style.display = activeImages.length > 1 ? '' : 'none';
+  }
+
+  function setModalCta(inStock) {
+    if (!modalAddCart) return;
+    modalAddCart.disabled = false;
+    if (!inStock) {
+      modalAddCart.classList.remove('add-to-cart');
+      modalAddCart.classList.add('enquire-product');
+      modalAddCart.innerHTML = '<i class="fab fa-whatsapp"></i> Enquire';
+      modalAddCart.setAttribute('aria-label', 'Enquire about this product on WhatsApp');
+    } else {
+      modalAddCart.classList.remove('enquire-product');
+      modalAddCart.classList.add('add-to-cart');
+      modalAddCart.innerHTML = '<i class="fas fa-shopping-bag"></i> Add to Cart';
+      modalAddCart.setAttribute('aria-label', 'Add to cart');
+    }
+  }
+
+  function normalizeColorKey(value) {
+    return String(value || '')
+      .trim()
+      .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+      .split(/[\s_-]+/)
+      .filter(Boolean)
+      .map(function (part, idx) {
+        var lower = part.toLowerCase();
+        return idx === 0 ? lower : (lower.charAt(0).toUpperCase() + lower.slice(1));
+      })
+      .join('');
+  }
+
+  function toDisplayColor(value) {
+    var key = normalizeColorKey(value);
+    return key
+      .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+      .split(' ')
+      .filter(Boolean)
+      .map(function (part) { return part.charAt(0).toUpperCase() + part.slice(1); })
+      .join(' ');
+  }
+
+  function clearColorOptions() {
+    activeColorOptions = [];
+    activeColorStock = {};
+    activeColor = '';
+    if (modalColors) modalColors.style.display = 'none';
+    if (modalColorOps) modalColorOps.innerHTML = '';
+  }
+
+  function updateSelectedColor(baseName, priceCurrent, colorKey) {
+    var normalizedColor = normalizeColorKey(colorKey);
+    var displayColor = toDisplayColor(normalizedColor);
+    activeColor = normalizedColor;
+    if (modalColorOps) {
+      modalColorOps.querySelectorAll('.tb-color-option').forEach(function (btn) {
+        var isActive = btn.dataset.color === normalizedColor;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-checked', String(isActive));
+      });
+    }
+    if (modalAddCart) {
+      modalAddCart.dataset.name = baseName + ' (' + displayColor + ')';
+      modalAddCart.dataset.price = priceCurrent;
+    }
+    setModalCta(activeColorStock[normalizedColor] !== false);
+  }
+
+  function initColorOptions(card, baseName, priceCurrent) {
+    clearColorOptions();
+    if (!modalColors || !modalColorOps) return false;
+
+    var colorsAttr = card.dataset.colorOptions || '';
+    if (!colorsAttr) return false;
+
+    try {
+      activeColorOptions = JSON.parse(colorsAttr);
+    } catch (_) {
+      activeColorOptions = [];
+    }
+    activeColorOptions = activeColorOptions.map(normalizeColorKey).filter(Boolean);
+    if (!activeColorOptions.length) return false;
+
+    try {
+      activeColorStock = JSON.parse(card.dataset.colorStock || '{}');
+    } catch (_) {
+      activeColorStock = {};
+    }
+    var normalizedColorStock = {};
+    Object.keys(activeColorStock).forEach(function (key) {
+      normalizedColorStock[normalizeColorKey(key)] = activeColorStock[key];
+    });
+    activeColorStock = normalizedColorStock;
+
+    modalColors.style.display = '';
+    modalColorOps.innerHTML = '';
+    activeColorOptions.forEach(function (colorKey) {
+      var inStock = activeColorStock[colorKey] !== false;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tb-color-option';
+      if (!inStock) btn.classList.add('is-oos');
+      btn.dataset.color = colorKey;
+      btn.setAttribute('role', 'radio');
+      btn.setAttribute('aria-checked', 'false');
+      btn.setAttribute('aria-label', inStock ? toDisplayColor(colorKey) : (toDisplayColor(colorKey) + ' (Out of stock)'));
+      btn.textContent = toDisplayColor(colorKey);
+      btn.addEventListener('click', function () {
+        updateSelectedColor(baseName, priceCurrent, colorKey);
+      });
+      modalColorOps.appendChild(btn);
+    });
+
+    if (modalAddCart) {
+      modalAddCart.classList.remove('enquire-product');
+      modalAddCart.classList.add('add-to-cart');
+      modalAddCart.innerHTML = '<i class="fas fa-list"></i> Select Color';
+      modalAddCart.setAttribute('aria-label', 'Select color before adding to cart');
+      modalAddCart.dataset.name = baseName;
+      modalAddCart.dataset.price = priceCurrent;
+      modalAddCart.disabled = true;
+    }
+    return true;
   }
 
   function openModal() {
@@ -316,11 +443,12 @@
 
   // ── open on card click (event delegation) ────
   document.addEventListener('click', function (e) {
+    var chooseOptionsBtn = e.target.closest('.choose-options');
     var card = e.target.closest('.product-card');
     if (!card) return;
 
     // Don't open modal if the user clicked a link or button (e.g., Add to Cart)
-    if (e.target.closest('a, button')) return;
+    if (e.target.closest('a, button') && !chooseOptionsBtn) return;
 
     lastFocused = card;
 
@@ -375,17 +503,11 @@
     if (modalAddCart) {
       modalAddCart.dataset.name = name;
       modalAddCart.dataset.price = priceCurrent;
-      var modalInStock = (card.dataset.inStock || 'true').toLowerCase() !== 'false';
-      if (!modalInStock) {
-        modalAddCart.classList.remove('add-to-cart');
-        modalAddCart.classList.add('enquire-product');
-        modalAddCart.innerHTML = '<i class="fab fa-whatsapp"></i> Enquire';
-        modalAddCart.setAttribute('aria-label', 'Enquire about this product on WhatsApp');
-      } else {
-        modalAddCart.classList.remove('enquire-product');
-        modalAddCart.classList.add('add-to-cart');
-        modalAddCart.innerHTML = '<i class="fas fa-shopping-bag"></i> Add to Cart';
-        modalAddCart.setAttribute('aria-label', 'Add to cart');
+      var hasColorOptions = card.dataset.category === 'jewellery-box';
+      if (!hasColorOptions || !initColorOptions(card, name, priceCurrent)) {
+        clearColorOptions();
+        var modalInStock = (card.dataset.inStock || 'true').toLowerCase() !== 'false';
+        setModalCta(modalInStock);
       }
     }
 
