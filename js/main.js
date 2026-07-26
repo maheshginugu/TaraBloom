@@ -204,6 +204,7 @@
   var modalPrice    = document.getElementById('tb-modal-price');
   var modalAddCart  = document.getElementById('tb-modal-add-cart');
   var modalColors   = document.getElementById('tb-modal-colors');
+  var modalColorLabel = modal.querySelector('.tb-modal-colors-label');
   var modalColorOps = document.getElementById('tb-modal-color-options');
   var modalBadge    = modal.querySelector('.modal-product-badge');
   var modalPrev     = document.getElementById('tb-modal-prev');
@@ -213,6 +214,7 @@
   var activeIndex  = 0;
   var activeColorOptions = [];
   var activeColorStock = {};
+  var activeColorLabels = {};
   var activeColor = '';
   var lastFocused  = null;
 
@@ -280,14 +282,21 @@
   function clearColorOptions() {
     activeColorOptions = [];
     activeColorStock = {};
+    activeColorLabels = {};
     activeColor = '';
     if (modalColors) modalColors.style.display = 'none';
+    if (modalColorLabel) modalColorLabel.textContent = 'Select color';
     if (modalColorOps) modalColorOps.innerHTML = '';
+  }
+
+  function getColorOptionLabel(colorKey) {
+    var normalizedColor = normalizeColorKey(colorKey);
+    return activeColorLabels[normalizedColor] || toDisplayColor(normalizedColor);
   }
 
   function updateSelectedColor(baseName, priceCurrent, colorKey) {
     var normalizedColor = normalizeColorKey(colorKey);
-    var displayColor = toDisplayColor(normalizedColor);
+    var displayColor = getColorOptionLabel(normalizedColor);
     activeColor = normalizedColor;
     if (modalColorOps) {
       modalColorOps.querySelectorAll('.tb-color-option').forEach(function (btn) {
@@ -323,12 +332,23 @@
     } catch (_) {
       activeColorStock = {};
     }
+    try {
+      activeColorLabels = JSON.parse(card.dataset.colorLabels || '{}');
+    } catch (_) {
+      activeColorLabels = {};
+    }
     var normalizedColorStock = {};
     Object.keys(activeColorStock).forEach(function (key) {
       normalizedColorStock[normalizeColorKey(key)] = activeColorStock[key];
     });
     activeColorStock = normalizedColorStock;
+    var normalizedColorLabels = {};
+    Object.keys(activeColorLabels).forEach(function (key) {
+      normalizedColorLabels[normalizeColorKey(key)] = activeColorLabels[key];
+    });
+    activeColorLabels = normalizedColorLabels;
 
+    if (modalColorLabel) modalColorLabel.textContent = 'Select color';
     modalColors.style.display = '';
     modalColorOps.innerHTML = '';
     activeColorOptions.forEach(function (colorKey) {
@@ -340,8 +360,8 @@
       btn.dataset.color = colorKey;
       btn.setAttribute('role', 'radio');
       btn.setAttribute('aria-checked', 'false');
-      btn.setAttribute('aria-label', inStock ? toDisplayColor(colorKey) : (toDisplayColor(colorKey) + ' (Out of stock)'));
-      btn.textContent = toDisplayColor(colorKey);
+      btn.setAttribute('aria-label', inStock ? getColorOptionLabel(colorKey) : (getColorOptionLabel(colorKey) + ' (Out of stock)'));
+      btn.textContent = getColorOptionLabel(colorKey);
       btn.addEventListener('click', function () {
         updateSelectedColor(baseName, priceCurrent, colorKey);
       });
@@ -353,6 +373,55 @@
       modalAddCart.classList.add('add-to-cart');
       modalAddCart.innerHTML = '<i class="fas fa-list"></i> Select Color';
       modalAddCart.setAttribute('aria-label', 'Select color before adding to cart');
+      modalAddCart.dataset.name = baseName;
+      modalAddCart.dataset.price = priceCurrent;
+      modalAddCart.disabled = true;
+    }
+    return true;
+  }
+
+  function initLetterOptions(card, baseName, priceCurrent) {
+    clearColorOptions();
+    if (!modalColors || !modalColorOps) return false;
+
+    var lettersAttr = card.dataset.letterOptions || '';
+    if (!lettersAttr) return false;
+
+    try {
+      activeColorOptions = JSON.parse(lettersAttr);
+    } catch (_) {
+      activeColorOptions = [];
+    }
+    activeColorOptions = activeColorOptions.map(normalizeColorKey).filter(Boolean);
+    if (!activeColorOptions.length) return false;
+
+    activeColorStock = {};
+    if (modalColorLabel) modalColorLabel.textContent = 'Select letter';
+
+    modalColors.style.display = '';
+    modalColorOps.innerHTML = '';
+    activeColorOptions.forEach(function (letterKey) {
+      var inStock = activeColorStock[letterKey] !== false;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tb-color-option';
+      if (!inStock) btn.classList.add('is-oos');
+      btn.dataset.color = letterKey;
+      btn.setAttribute('role', 'radio');
+      btn.setAttribute('aria-checked', 'false');
+      btn.setAttribute('aria-label', inStock ? toDisplayColor(letterKey) : (toDisplayColor(letterKey) + ' (Out of stock)'));
+      btn.textContent = toDisplayColor(letterKey);
+      btn.addEventListener('click', function () {
+        updateSelectedColor(baseName, priceCurrent, letterKey);
+      });
+      modalColorOps.appendChild(btn);
+    });
+
+    if (modalAddCart) {
+      modalAddCart.classList.remove('enquire-product');
+      modalAddCart.classList.add('add-to-cart');
+      modalAddCart.innerHTML = '<i class="fas fa-list"></i> Select Letter';
+      modalAddCart.setAttribute('aria-label', 'Select letter before adding to cart');
       modalAddCart.dataset.name = baseName;
       modalAddCart.dataset.price = priceCurrent;
       modalAddCart.disabled = true;
@@ -503,8 +572,13 @@
     if (modalAddCart) {
       modalAddCart.dataset.name = name;
       modalAddCart.dataset.price = priceCurrent;
-      var hasColorOptions = card.dataset.category === 'jewellery-box';
-      if (!hasColorOptions || !initColorOptions(card, name, priceCurrent)) {
+      var hasVariantOptions = false;
+      if (card.dataset.letterOptions) {
+        hasVariantOptions = initLetterOptions(card, name, priceCurrent);
+      } else if (card.dataset.colorOptions || card.dataset.colorLabels || card.dataset.category === 'jewellery-box') {
+        hasVariantOptions = initColorOptions(card, name, priceCurrent);
+      }
+      if (!hasVariantOptions) {
         clearColorOptions();
         var modalInStock = (card.dataset.inStock || 'true').toLowerCase() !== 'false';
         setModalCta(modalInStock);
