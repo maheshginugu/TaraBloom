@@ -224,12 +224,12 @@
         '</div>' +
         '<div class="tb-form-row">' +
           '<label class="tb-form-label" for="tb-cust-email">Email Address <span class="tb-req" aria-hidden="true">*</span></label>' +
-          '<input class="tb-form-input" type="email" id="tb-cust-email" name="email" autocomplete="email" placeholder="you@example.com" value="' + escapeHtml(c.email || '') + '" aria-required="true">' +
+          '<input class="tb-form-input" type="email" id="tb-cust-email" name="email" autocomplete="email" placeholder="you@gmail.com" value="' + escapeHtml(c.email || '') + '" aria-required="true">' +
           '<span class="tb-form-error" id="tb-err-email" aria-live="polite"></span>' +
         '</div>' +
         '<div class="tb-form-row">' +
           '<label class="tb-form-label" for="tb-cust-phone">Phone Number <span class="tb-req" aria-hidden="true">*</span></label>' +
-          '<input class="tb-form-input" type="tel" id="tb-cust-phone" name="phone" autocomplete="tel" placeholder="+91 9876543210" value="' + escapeHtml(c.phone || '') + '" aria-required="true">' +
+          '<input class="tb-form-input" type="tel" id="tb-cust-phone" name="phone" autocomplete="tel" placeholder="8247382157" value="' + escapeHtml(c.phone || '') + '" aria-required="true">' +
           '<span class="tb-form-error" id="tb-err-phone" aria-live="polite"></span>' +
         '</div>' +
         '<div class="tb-form-row">' +
