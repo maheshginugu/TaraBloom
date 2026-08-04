@@ -119,7 +119,7 @@
      ============================================= */
 
   var DEFAULT_SHIPPING = 100;
-  var FREE_SHIPPING_THRESHOLD = 999;
+  var FREE_SHIPPING_THRESHOLD = 1499;
 
   function parsePrice(price) {
     return parseFloat(String(price).replace(/[^\d.]/g, '')) || 0;

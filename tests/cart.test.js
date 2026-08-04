@@ -392,12 +392,12 @@ describe('calcOrderSummary', () => {
     expect(summary.total).toBe(1000);
   });
 
-  test('subtotal ₹999 => shipping ₹100, total ₹1099', () => {
-    const cart = [{ name: 'Ring', price: '₹999', qty: 1 }];
+  test('subtotal ₹1499 => shipping ₹100, total ₹1599', () => {
+    const cart = [{ name: 'Ring', price: '₹1499', qty: 1 }];
     const summary = calcOrderSummary(cart);
-    expect(summary.subtotal).toBe(999);
+    expect(summary.subtotal).toBe(1499);
     expect(summary.shipping).toBe(100);
-    expect(summary.total).toBe(1099);
+    expect(summary.total).toBe(1599);
   });
 
   test('subtotal ₹500 => shipping ₹100, total ₹600', () => {
@@ -426,9 +426,9 @@ describe('calcOrderSummary', () => {
     expect(summary.total).toBe(100);
   });
 
-  test('free shipping is strictly > 999, not >= 999', () => {
-    const cartAtThreshold = [{ name: 'Item', price: '₹999', qty: 1 }];
-    const cartAboveThreshold = [{ name: 'Item', price: '₹1000', qty: 1 }];
+  test('free shipping is strictly > 1499, not >= 1499', () => {
+    const cartAtThreshold = [{ name: 'Item', price: '₹1499', qty: 1 }];
+    const cartAboveThreshold = [{ name: 'Item', price: '₹1500', qty: 1 }];
     expect(calcOrderSummary(cartAtThreshold).shipping).toBe(100);
     expect(calcOrderSummary(cartAboveThreshold).shipping).toBe(0);
   });
@@ -452,7 +452,7 @@ describe('renderOrderSummary', () => {
     expect(html).toContain('FREE');
   });
 
-  test('shows ₹100 shipping when subtotal <= 999', () => {
+  test('shows ₹100 shipping when subtotal <= 1499', () => {
     const cart = [{ name: 'Item', price: '₹500', qty: 1 }];
     const html = renderOrderSummary(cart);
     expect(html).toContain('100');

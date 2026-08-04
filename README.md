@@ -97,7 +97,7 @@ npm test
 - WhatsApp number used in checkout/enquiry: `918247382157`
 - Shipping in `js/cart.js`:
   - default shipping: `Rs 100`
-  - free shipping threshold: subtotal `> Rs 999`
+  - free shipping threshold: subtotal `> Rs 1499`
 - Checkout opens `https://wa.me/918247382157` with encoded order + delivery details
 
 ## Deployment notes
